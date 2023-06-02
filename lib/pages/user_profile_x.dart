@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/button.dart';
+
 class UserProfileX extends StatelessWidget {
   const UserProfileX({super.key});
 
@@ -13,12 +15,12 @@ class UserProfileX extends StatelessWidget {
               width: double.infinity,
               height: 300,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(35),
-                color: Colors.blue
+                // borderRadius: BorderRadius.circular(75),
+                color: Theme.of(context).colorScheme.primary
               ),
             child: Stack(
               children: [
-                Container(color: Colors.blue, height: 50, width: double.infinity,),
+                Container(color: Theme.of(context).colorScheme.primary, height: 100, width: double.infinity,),
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: IconButton(
@@ -43,86 +45,108 @@ class UserProfileX extends StatelessWidget {
             ),
             ),
             const SizedBox(height: 30,),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.person,
               size: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 20),
               child: Text(
                 'Eduardo Machado',
                 style: TextStyle(
-                  fontSize: 20
+                  fontSize: 18
                 ),
               ),
             ),
               ],
             ),
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            Container(
+              color: Colors.grey[200],
+              width: double.infinity,
+              height: 1,
+            ),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.attach_file,
               size: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 20),
               child: Text(
                 'ja35009',
                 style: TextStyle(
-                  fontSize: 20
+                  fontSize: 18
                 ),
               ),
             ),
               ],
             ),
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            Container(
+              color: Colors.grey[200],
+              width: double.infinity,
+              height: 1,
+            ),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.alternate_email,
               size: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 20),
               child: Text(
                 'eduardo.m@malwee.com',
                 style: TextStyle(
-                  fontSize: 20
+                  fontSize: 18
                 ),
               ),
             ),
               ],
             ),
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            Container(
+              color: Colors.grey[200],
+              width: double.infinity,
+              height: 1,
+            ),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.lock_outline,
               size: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 20),
               child: Text(
                 'Administrador',
                 style: TextStyle(
-                  fontSize: 20
+                  fontSize: 18
                 ),
               ),
             ),
               ],
             ),
-            )
+            ),
+            Container(
+              color: Colors.grey[200],
+              width: double.infinity,
+              height: 1,
+            ),
+            const SizedBox(height: 30,),
+            ButtonComponent(route: () {}, title: "Editar Usuários")
           ],
         ),
       ),

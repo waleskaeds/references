@@ -15,11 +15,11 @@ class UserProfile extends StatelessWidget {
               height: 300,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(75),
-                color: Colors.deepPurpleAccent
+                color: Theme.of(context).colorScheme.primary
               ),
             child: Stack(
               children: [
-                Container(color: Colors.deepPurpleAccent, height: 100, width: double.infinity,),
+                Container(color: Theme.of(context).colorScheme.primary, height: 100, width: double.infinity,),
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: IconButton(
@@ -44,10 +44,10 @@ class UserProfile extends StatelessWidget {
             ),
             ),
             const SizedBox(height: 30,),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.person,
               size: 30,
@@ -69,10 +69,10 @@ class UserProfile extends StatelessWidget {
               width: double.infinity,
               height: 1,
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.attach_file,
               size: 30,
@@ -94,10 +94,10 @@ class UserProfile extends StatelessWidget {
               width: double.infinity,
               height: 1,
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.alternate_email,
               size: 30,
@@ -119,10 +119,10 @@ class UserProfile extends StatelessWidget {
               width: double.infinity,
               height: 1,
             ),
-            Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
             child: Row(
-              children: const [
+              children: [
             Icon(
               Icons.lock_outline,
               size: 30,

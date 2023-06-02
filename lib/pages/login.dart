@@ -6,7 +6,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2273e1),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Column(
         children: [
           Container(
@@ -47,9 +47,9 @@ class Login extends StatelessWidget {
                 prefixIcon: Icon(Icons.mail, color: Colors.white),
                 labelText: "E-mail",
                 labelStyle: TextStyle(
-                  color: Colors.white
+                  color: Colors.white,
+                  fontFamily: 'Rubik',
                 ),
-                fillColor: Colors.amber,
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Colors.white,
@@ -70,9 +70,9 @@ class Login extends StatelessWidget {
                 prefixIcon: Icon(Icons.key, color: Colors.white),
                 labelText: "Senha",
                 labelStyle: TextStyle(
-                  color: Colors.white
+                  color: Colors.white,
+                  fontFamily: 'Rubik',
                 ),
-                fillColor: Colors.amber,
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                   color: Colors.white,
@@ -96,14 +96,15 @@ class Login extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: (){}, 
-              child: const Text(
+              child: Text(
                 "Entrar ", 
-                style: TextStyle(color: Color(0xff2273e1), fontSize: 15),)),
+                style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 15, fontFamily: 'Rubik',),)),
           ),
           TextButton(onPressed: (){}, child: const Text(
             "Esqueceu sua senha? Clique aqui",
             style: TextStyle(
               color: Colors.white,
+              fontFamily: 'Rubik',
               fontSize: 13
             ),
           ))
