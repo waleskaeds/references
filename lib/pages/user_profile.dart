@@ -6,20 +6,20 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final heightSize = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Center(
         child: Column(
           children: <Widget>[
             Container(
               width: double.infinity,
-              height: 300,
+              height: heightSize * 0.45,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(75),
+                borderRadius: const BorderRadius.only(bottomRight: Radius.circular(75), bottomLeft: Radius.circular(75)),
                 color: Theme.of(context).colorScheme.primary
               ),
             child: Stack(
               children: [
-                Container(color: Theme.of(context).colorScheme.primary, height: 100, width: double.infinity,),
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: IconButton(
@@ -43,9 +43,9 @@ class UserProfile extends StatelessWidget {
               ],
             ),
             ),
-            const SizedBox(height: 30,),
+            SizedBox(height: heightSize * 0.05,),
             const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
             child: Row(
               children: [
             Icon(
@@ -70,7 +70,7 @@ class UserProfile extends StatelessWidget {
               height: 1,
             ),
             const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
             child: Row(
               children: [
             Icon(
@@ -95,7 +95,7 @@ class UserProfile extends StatelessWidget {
               height: 1,
             ),
             const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
             child: Row(
               children: [
             Icon(
@@ -120,7 +120,7 @@ class UserProfile extends StatelessWidget {
               height: 1,
             ),
             const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
             child: Row(
               children: [
             Icon(
@@ -144,7 +144,10 @@ class UserProfile extends StatelessWidget {
               width: double.infinity,
               height: 1,
             ),
-            const SizedBox(height: 30,),
+            SizedBox(height: heightSize > 750
+            ? 50
+            : 30
+            ),
             ButtonComponent(route: () {}, title: "Editar Usuários")
           ],
         ),

@@ -20,7 +20,6 @@ class UserProfileX extends StatelessWidget {
               ),
             child: Stack(
               children: [
-                Container(color: Theme.of(context).colorScheme.primary, height: 100, width: double.infinity,),
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: IconButton(

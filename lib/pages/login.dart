@@ -12,17 +12,12 @@ class Login extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 250,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(45)
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(50), bottomLeft: Radius.circular(50)),
             ),
             child: Stack(
               children: [
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  color: Colors.white
-                ),
                 Column(
                   children: [
                     Padding(

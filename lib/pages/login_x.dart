@@ -11,113 +11,135 @@ class _LoginXState extends State<LoginX> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 200,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15, bottom: 10),
-                        child: Image.asset('assets/images/grupo_malwee_logo.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Image.asset('assets/images/grupo_malwee_letra.png'),
-                      ),
-                    ],
-                  ),
-                )
-            ]),
-          ),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(45)
-              ),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            colors: [
+              Colors.blue[900]!,
+              // Colors.blue[800]!,
+              Colors.blue[600]!,
+            ])
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 80,),
+            const Padding(
+              padding: EdgeInsets.all(20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 45,),
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.mail, color: Colors.white),
-                        labelText: "E-mail",
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Rubik',
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                        )),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                        )),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.key, color: Colors.white),
-                        labelText: "Senha",
-                        labelStyle: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Rubik',
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                        )),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                        )),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 5),
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(45),
-                      color: Colors.white,
-                    ),
-                    child: TextButton(
-                      onPressed: (){}, 
-                      child: Text(
-                        "Entrar ", 
-                        style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 15, fontFamily: 'Rubik',),)),
-                  ),
-                  TextButton(onPressed: (){}, child: const Text(
-                    "Esqueceu sua senha? Clique aqui",
+                  Text(
+                    'Login',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 13,
-                      fontFamily: 'Rubik',
+                      fontSize: 40,
+                      fontFamily: 'Rubik'
                     ),
-                  ))
+                  ),
+                  SizedBox(height: 10,),
+                  Text(
+                    'Welcome Back',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Rubik'
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 30,),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(60), topRight: Radius.circular(60))
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 80,),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [BoxShadow(
+                            color: Colors.grey[300]!,
+                            blurRadius: 20,
+                            offset: const Offset(0, 10)
+                          )]
+                        ),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.account_circle),
+                                labelText: 'Matrícula',
+                                hintText: "Ex: ja35009"
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20,),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [BoxShadow(
+                            color: Colors.grey[300]!,
+                            blurRadius: 20,
+                            offset: const Offset(0, 10)
+                          )]
+                        ),
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.key),
+                                labelText: 'Senha',
+                                hintText: "Insira aqui sua senha"
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 20, left: 15, right: 15, bottom: 5),
+                        width: double.infinity,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(45),
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        child: TextButton(
+                          onPressed: (){}, 
+                          child: const Text(
+                            "Entrar ", 
+                            style: TextStyle(color: Colors.white, fontSize: 15, fontFamily: 'Rubik',),)),
+                      ),
+                      TextButton(onPressed: (){}, child: Text(
+                        "Esqueceu sua senha? Clique aqui",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontFamily: 'Rubik',
+                          fontSize: 13
+                        ),
+                      ))
+                    ]),
+                ),
+              )
+            )
+          ],
+        ),
       ),
     );
+    
   }
 }
