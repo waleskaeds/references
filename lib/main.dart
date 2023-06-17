@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:references/components/button.dart';
 import 'package:references/pages/login.dart';
 import 'package:references/pages/login_x.dart';
-import 'package:references/pages/login_y.dart';
 import 'package:references/pages/user_profile.dart';
 import 'package:references/pages/user_profile_x.dart';
 
@@ -67,12 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginX(),));
             },
           ),
-          ButtonComponent(
-            title: "Login 2",
-            route: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginY(),));
-            },
-          ),
+          // ButtonComponent(
+          //   title: "Login 2",
+          //   route: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginY(),));
+          //   },
+          // ),
         ],
       ),
     );
