@@ -66,6 +66,7 @@ flutter:
     - assets/images/grupo_malwee.png
     - assets/images/element_abstract.png
     - assets/images/img_malwee.png
+    - assets/images/background.png
     - assets/fonts/Rubik-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
