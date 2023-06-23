@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:references/pages/list.dart';
 
 class LoginBackground extends StatelessWidget {
   const LoginBackground({super.key});
@@ -24,29 +25,20 @@ class LoginBackground extends StatelessWidget {
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 50,),
-                    SizedBox(
+                    const SizedBox(height: 100,),
+                    const SizedBox(
                       height: 110,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 30),
-                            child: Text(
-                              'Login',
-                              style: TextStyle(
-                                fontFamily: 'Rubik',
-                                color: Colors.black,
-                                fontSize: 30
-                              ),
-                            ),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 30),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 60
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 30, right: 70),
-                            child: Image.asset('assets/images/grupo_malwee_letra.png',),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                     Padding(
@@ -57,11 +49,9 @@ class LoginBackground extends StatelessWidget {
                           labelText: "E-mail",
                           hintText: "email@email.com",
                           labelStyle: TextStyle(
-                            fontFamily: 'Rubik',
                             color: Colors.black
                           ),
                           hintStyle: TextStyle(
-                            fontFamily: 'Rubik',
                             color: Colors.black
                           ),
                           focusedBorder: UnderlineInputBorder(
@@ -86,11 +76,9 @@ class LoginBackground extends StatelessWidget {
                           labelText: "Senha",
                           hintText: "Insira aqui sua senha",
                           labelStyle: TextStyle(
-                            fontFamily: 'Rubik',
                             color: Colors.black
                           ),
                           hintStyle: TextStyle(
-                            fontFamily: 'Rubik',
                             color: Colors.black
                           ),
                           focusedBorder: UnderlineInputBorder(
@@ -115,13 +103,14 @@ class LoginBackground extends StatelessWidget {
                         color: Colors.black//Theme.of(context).colorScheme.primary,
                       ),
                       child: TextButton(
-                        onPressed: (){}, 
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ListPage(),));
+                        }, 
                         child: const Text(
                           "Entrar ", 
                           style: TextStyle(
                             color: Colors.white, 
                             fontSize: 15, 
-                            fontFamily: 'Rubik',
                           ),
                         )
                       ),
@@ -133,7 +122,6 @@ class LoginBackground extends StatelessWidget {
                         "Esqueceu sua senha? Clique aqui",
                         style: TextStyle(
                           color: Colors.black,
-                          fontFamily: 'Rubik',
                           fontSize: 13
                         ),)
                       ),

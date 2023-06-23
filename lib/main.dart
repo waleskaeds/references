@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:references/pages/login.dart';
-import 'package:references/pages/login_background.dart';
-import 'package:references/pages/login_img.dart';
+import 'package:references/pages/list.dart';
+import 'package:references/pages/pdf.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Rubik',
         colorScheme: Theme.of(context)
             .colorScheme
-            .copyWith(primary: const Color(0xff2273e1),)
+            .copyWith(
+              primary: Colors.black,
+              secondary: Colors.deepPurpleAccent
+            )
             .copyWith(background: Colors.grey),
       ),
       debugShowCheckedModeBanner: false,
@@ -37,8 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Login();
-    // return const LoginImage();
-    // return const LoginBackground();
+    return const AppPdf();
   }
 }
