@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:references/pages/list.dart';
-import 'package:references/pages/pdf.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const AppPdf();
+    return const ListPage();
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pdf;
+import 'package:references/pages/pdf_view.dart';
 
 class ListPage extends StatefulWidget {
   const ListPage({super.key});
@@ -12,33 +14,70 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
 
-  createPDF(number) async {
+  Future<String> getFilePath() async {
+    try{
+      Directory appDocument = await getApplicationDocumentsDirectory();
+      String appDocumentPath = appDocument.path;
+      String filePath = '$appDocumentPath/teste.pdf';
+      return filePath;
+    } catch(_){
+      _.toString();
+    }
+    return '';
+  }
+
+  void readFile(String path) async {
+    File file = File(await getFilePath());
+    final fileContent = await file.readAsBytes();
+    if(mounted) Navigator.push(context, MaterialPageRoute(builder: (context) => PdfView(bytes: fileContent, path: path,),));
+  }
+
+  createFile(List<int> list) async {
     final pdf.Document newPDF = pdf.Document();
 
+    // newPDF.addPage(pdf.MultiPage(
+    //   build: (context) => [
+    //     pdf.TableHelper.fromTextArray(
+    //       data: 
+    //       <List<int>>[
+    //         <int>[number]
+    //       ]
+    //     )],
+    //   )
+    // );
     newPDF.addPage(pdf.MultiPage(
-      build: (context) => [
-        pdf.TableHelper.fromTextArray(
-          data: <List<int>>[
-            <int>[number]
-          ]
-        )],
+      margin: const pdf.EdgeInsets.all(10),
+      pageFormat: PdfPageFormat.a4,
+      build: (context) {
+        return <pdf.Widget> [
+          pdf.Column(
+            mainAxisAlignment: pdf.MainAxisAlignment.center,
+            crossAxisAlignment: pdf.CrossAxisAlignment.center,
+            children: [
+              pdf.Text(
+                'Grupo Malwee',
+                style: const pdf.TextStyle(
+                  fontSize: 30
+                )
+              ),
+              pdf.SizedBox(height: 20),
+              pdf.ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) => pdf.Text('${list[index]}'),
+              )
+            ]
+          )
+        ];
+      },
       )
     );
 
-    // On Flutter, use the [path_provider](https://pub.dev/packages/path_provider) library:
-      // final output = await getTemporaryDirectory();
-      // final file = File("${output.path}/example.pdf");
-    // final file = FileSystemEntity.typeSync(path)
-    final file = File("example.pdf");
-    await file.writeAsBytes(await newPDF.save());
-
-    // final String directory = (await getApplicationDocumentsDirectory()).path;
-    // final path = '$directory/pdf_generate.pdf';
-    // final File file = File(path);
-    // file.writeAsBytesSync(newPDF.save() as List<int>);
+    File file = File(await getFilePath());
+    file.writeAsBytes(await newPDF.save());
+    readFile(file.path);
   }
 
-  final list = [
+  List<int> list = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
   ];
 
@@ -50,7 +89,9 @@ class _ListPageState extends State<ListPage> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              createFile(list);
+            }, 
             icon: const Icon(Icons.picture_as_pdf)
           )
         ],
@@ -64,7 +105,7 @@ class _ListPageState extends State<ListPage> {
               title: Text(list[index].toString()),
               leading: IconButton(
                 onPressed: (){
-                  createPDF(list[index]);
+                  // createFile(list[index]);
                 }, 
                 icon: const Icon(Icons.abc)),
             ),
