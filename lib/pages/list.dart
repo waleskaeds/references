@@ -32,25 +32,17 @@ class _ListPageState extends State<ListPage> {
     if(mounted) Navigator.push(context, MaterialPageRoute(builder: (context) => PdfView(bytes: fileContent, path: path,),));
   }
 
-  createFile(List<int> list) async {
+  createListFile(List<int> list) async {
     final pdf.Document newPDF = pdf.Document();
 
-    // newPDF.addPage(pdf.MultiPage(
-    //   build: (context) => [
-    //     pdf.TableHelper.fromTextArray(
-    //       data: 
-    //       <List<int>>[
-    //         <int>[number]
-    //       ]
-    //     )],
-    //   )
-    // );
     newPDF.addPage(pdf.MultiPage(
       margin: const pdf.EdgeInsets.all(10),
       pageFormat: PdfPageFormat.a4,
       build: (context) {
         return <pdf.Widget> [
-          pdf.Column(
+          pdf.Container(
+          width: double.infinity,
+          child: pdf.Column(
             mainAxisAlignment: pdf.MainAxisAlignment.center,
             crossAxisAlignment: pdf.CrossAxisAlignment.center,
             children: [
@@ -63,12 +55,35 @@ class _ListPageState extends State<ListPage> {
               pdf.SizedBox(height: 20),
               pdf.ListView.builder(
                 itemCount: list.length,
-                itemBuilder: (context, index) => pdf.Text('${list[index]}'),
+                itemBuilder: (context, index) => pdf.TableHelper.fromTextArray(
+                data: <List<String>>[
+                  [list[index].toString()]
+                ]
+              ),
               )
             ]
-          )
+          ))
         ];
       },
+      )
+    );
+
+    File file = File(await getFilePath());
+    file.writeAsBytes(await newPDF.save());
+    readFile(file.path);
+  }
+
+  createFile(number) async {
+    final pdf.Document newPDF = pdf.Document();
+
+    newPDF.addPage(pdf.MultiPage(
+      build: (context) => [
+        pdf.TableHelper.fromTextArray(
+          data: 
+          <List<String>>[
+            ['Número'],[number.toString()]
+          ]
+        )],
       )
     );
 
@@ -90,7 +105,7 @@ class _ListPageState extends State<ListPage> {
         actions: [
           IconButton(
             onPressed: (){
-              createFile(list);
+              createListFile(list);
             }, 
             icon: const Icon(Icons.picture_as_pdf)
           )
@@ -105,7 +120,7 @@ class _ListPageState extends State<ListPage> {
               title: Text(list[index].toString()),
               leading: IconButton(
                 onPressed: (){
-                  // createFile(list[index]);
+                  createFile(list[index]);
                 }, 
                 icon: const Icon(Icons.abc)),
             ),
